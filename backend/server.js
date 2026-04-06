@@ -32,7 +32,7 @@ socketHandler(io);
 app.set('socketio', io);
 
 // Routes
-app.use('/api/messages', messageRoutes);
+app.use('/', messageRoutes);
 
 // MongoDB connection
 const PORT = process.env.PORT || 5000;

@@ -5,9 +5,9 @@ const getApiUrl = () => {
   
   const { hostname } = window.location;
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return `http://${hostname}:5000/api`;
+    return `http://${hostname}:5000`;
   }
-  return 'http://localhost:5000/api';
+  return 'http://localhost:5000';
 };
 
 const API_URL = getApiUrl();

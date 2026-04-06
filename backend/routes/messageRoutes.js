@@ -7,9 +7,9 @@ const {
   togglePin,
 } = require('../controllers/messageController');
 
-router.get('/', getMessages);
-router.post('/', createMessage);
-router.delete('/:id', deleteMessage);
-router.patch('/:id/pin', togglePin);
+router.get('/messages', getMessages);
+router.post('/messages', createMessage);
+router.delete('/messages/:id', deleteMessage);
+router.patch('/messages/:id/pin', togglePin);
 
 module.exports = router;
