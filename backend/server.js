@@ -1,4 +1,6 @@
 const express = require('express');
+const app = express();
+
 const http = require('http');
 const socketIo = require('socket.io');
 const mongoose = require('mongoose');
@@ -9,7 +11,6 @@ require('dotenv').config();
 const messageRoutes = require('./routes/messageRoutes');
 const socketHandler = require('./sockets/socket');
 
-const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
@@ -24,15 +25,13 @@ const io = socketIo(server, {
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use('/', messageRoutes);
 
 // Socket.io logic
 socketHandler(io);
 
 // Make io accessible to routes
 app.set('socketio', io);
-
-// Routes
-app.use('/', messageRoutes);
 
 // MongoDB connection
 const PORT = process.env.PORT || 5000;
